@@ -139,6 +139,5 @@ jobs:
       run: |
         PATH="$PATH:`pwd`/flutter/bin"
         cd opendds-smart-lock
-        flutter doctor --android-licenses -v
         ./smart-lock ios build-toolchain-sim
         ./smart-lock ios compile-sim
