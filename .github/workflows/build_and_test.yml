@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - master
+      - SL-16-flutter-app-script-and-ci-updates
     paths:
       - '**'
       # Don't run this workflow if the only files that changed are the
