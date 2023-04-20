@@ -121,7 +121,7 @@ jobs:
         ./smart-lock android build-toolchain-x86
         ./smart-lock android compile
 
-build_ios x86_64:
+build_ios_x86_64:
 
     runs-on: macos-latest
 
