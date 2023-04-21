@@ -119,3 +119,25 @@ jobs:
         cd opendds-smart-lock
         ./smart-lock android build-toolchain-x86
         ./smart-lock android compile
+
+  build_ios_x64:
+
+    runs-on: macos-latest
+
+    steps:
+    - name: install coreutils
+      run: brew install coreutils
+    - name: install flutter
+      shell: bash
+      run: |
+        git clone https://github.com/flutter/flutter.git
+    - name: checkout opendds-smart-lock
+      uses: actions/checkout@v3
+      with:
+        path: opendds-smart-lock
+    - name: build ios x86_64
+      run: |
+        PATH="$PATH:`pwd`/flutter/bin"
+        cd opendds-smart-lock
+        ./smart-lock ios build-toolchain-sim
+        ./smart-lock ios compile-sim
