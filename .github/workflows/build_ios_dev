@@ -1,0 +1,67 @@
+name: "Build IOS Dev"
+
+on:
+  push:
+    branches:
+      - master
+      - SL-16-Dev
+    paths:
+      - '**'
+      # Don't run this workflow if the only files that changed are the
+      # following. Make sure this is the same as the "pull_request.paths" list.
+      - '!AUTHORS'
+      - '!PROBLEM-REPORT-FORM'
+      - '!LICENSE'
+      - '!.dockerignore'
+      - '!.mailmap'
+      - '!deploy/**'
+      - '!docs/**'
+      - '!**.md'
+      - '!**.rst'
+      - '!**/.gitignore'
+      - '!**/README*'
+  pull_request:
+    branches:
+      - master
+      - SL-16-Dev
+    paths:
+      - '**'
+      # Don't run this workflow if the only files that changed are the
+      # following. Make sure this is the same as the "push.paths" list.
+      - '!AUTHORS'
+      - '!PROBLEM-REPORT-FORM'
+      - '!LICENSE'
+      - '!.dockerignore'
+      - '!.mailmap'
+      - '!deploy/**'
+      - '!docs/**'
+      - '!**.md'
+      - '!**.rst'
+      - '!**/.gitignore'
+      - '!**/README*'
+  workflow_dispatch:
+
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+
+  build_ios_x86_64:
+
+    runs-on: macos-11
+
+    steps:
+    - name: install flutter
+      shell: bash
+      run: |
+        git clone https://github.com/flutter/flutter.git
+    - name: checkout opendds-smart-lock
+      uses: actions/checkout@v3
+      with:
+        path: opendds-smart-lock
+    - name: build ios x86_64
+      run: |
+        PATH="$PATH:`pwd`/flutter/bin"
+        cd opendds-smart-lock
+        ./smart-lock ios build-toolchain-sim
