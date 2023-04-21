@@ -65,6 +65,7 @@ jobs:
     - name: build ios x86_64
       run: |
         PATH="$PATH:`pwd`/flutter/bin"
+        export IOS_ARCH=x86_64
         cd opendds-smart-lock
         ./smart-lock ios build-toolchain-sim
         ./smart-lock ios compile-sim
