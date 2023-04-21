@@ -49,7 +49,7 @@ jobs:
 
   build_ios_x86_64:
 
-    runs-on: macos-11
+    runs-on: macos-latest
 
     steps:
     - name: install coreutils
@@ -67,3 +67,4 @@ jobs:
         PATH="$PATH:`pwd`/flutter/bin"
         cd opendds-smart-lock
         ./smart-lock ios build-toolchain-sim
+        ./smart-lock ios compile-sim
