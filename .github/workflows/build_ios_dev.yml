@@ -54,6 +54,10 @@ jobs:
     steps:
     - name: install coreutils
       run: brew install coreutils
+    - name: install/update cocoapods
+      shell: bash
+      run: |
+        sudo gem install cocoapods
     - name: install flutter
       shell: bash
       run: |
