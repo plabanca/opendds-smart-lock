@@ -73,9 +73,9 @@ jobs:
         cd opendds-smart-lock
         ./smart-lock ios build-toolchain-sim
         ./smart-lock ios compile-sim
-    - name: Upload Artifact (ios-simulator-build)
+    - name: Upload Build Artifact (flutter)
       uses: actions/upload-artifact@v3
       with:
-        name: ios_build_${{ runner }}
-        path: ios/builds
+        name: flutter_build_${{ runner }}
+        path: flutter
         
