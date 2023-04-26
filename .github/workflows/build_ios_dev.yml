@@ -74,6 +74,7 @@ jobs:
         ./smart-lock ios build-toolchain-sim
         ./smart-lock ios compile-sim
     - name: Upload Flutter Build Artifact
+      if: always()
       uses: actions/upload-artifact@v3.1.2
       with:
         name: flutter_artifact
