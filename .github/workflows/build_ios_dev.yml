@@ -78,6 +78,4 @@ jobs:
       uses: actions/upload-artifact@v3.1.2
       with:
         name: smartlock_build_artifact
-        path: ${{ github.workspace }}
-        if-no-files-found: warn
-        retention-days: 4
+        path: opendds-smart-lock
