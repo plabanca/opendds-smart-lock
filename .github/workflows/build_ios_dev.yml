@@ -72,6 +72,7 @@ jobs:
         export IOS_ARCH=x86_64
         cd opendds-smart-lock
         ./smart-lock ios build-toolchain-sim
+        flutter pub get
         ./smart-lock ios compile-sim
     - name: Upload Flutter Build Artifact
       if: always()
